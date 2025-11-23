@@ -1,3 +1,4 @@
+"use client"
 
 import { Space_Grotesk } from 'next/font/google'
 
@@ -13,7 +14,7 @@ export function DecorativeText({ scrollProgress }: { scrollProgress: number }) {
       <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
         The future of<br />
         Creator Tokens<br />
-        experience
+        to Earn
       </h1>
       </div>
 

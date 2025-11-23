@@ -1,9 +1,16 @@
 "use client"
 
 import Link from 'next/link'
-import { Sparkles } from "lucide-react"
+import { Sparkles, ArrowRight, Wallet } from "lucide-react"
 import { useAccount } from 'wagmi'
 import { useState, useEffect } from 'react'
+import { Space_Grotesk } from 'next/font/google'
+
+// Initialize the font
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700']
+})
 
 export function HeroContent() {
   const { address } = useAccount()
@@ -14,61 +21,73 @@ export function HeroContent() {
   }, [])
 
   return (
-    <div className="max-w-5xl mx-auto text-center space-y-8 px-6">
-      <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/50 bg-emerald-400/10 px-4 py-2 backdrop-blur">
-        <Sparkles className="w-4 h-4 text-emerald-400" />
-        <span className="text-sm text-emerald-300 font-semibold">Welcome to the future of social DeFi</span>
+    <div className="max-w-5xl mx-auto text-center space-y-8 px-6 pt-20">
+      
+      {/* Badge */}
+      <div className="inline-flex items-center gap-2 rounded-full border border-orange-200/30 bg-white/10 px-4 py-2 backdrop-blur shadow-lg">
+        <Sparkles className="w-4 h-4 text-orange-200" />
+        <span className="text-sm text-orange-50 font-semibold">Welcome to the future of social DeFi</span>
       </div>
 
-      <h1 className="text-7xl md:text-8xl font-black tracking-tighter text-white leading-tight text-balance">
-        FARM.STAKE.EARN
+      {/* Main Headline */}
+      <h1 className={`${spaceGrotesk.className} text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter text-black leading-[0.9] text-balance drop-shadow-sm`}>
+        AURA.FARM
         <br />
-        <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-          Powered by Aura
+        <span className="bg-gradient-to-b from-orange-100 to-orange-200/60 bg-clip-text text-transparent">
+          FARM.STAKE.EARN
         </span>
       </h1>
 
-      <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed text-balance">
+      {/* Description */}
+      <p className="text-xl text-orange-50/90 max-w-2xl mx-auto leading-relaxed text-balance font-medium">
         Launch collateral-backed fan tokens on Celo. Build communities, earn rewards, and create sustainable creator
-        economies with transparent, decentralized infrastructure.
+        economies with verifiable on-chain reputation.
       </p>
 
-      <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+      {/* CTA Buttons with Wagmi Logic */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 items-center">
         <Link
           href="/vaults"
-          className="inline-flex items-center justify-center bg-white text-black px-6 py-3 rounded-lg font-bold text-base hover:bg-gray-100 shadow-lg"
+          className="inline-flex items-center gap-2 bg-white text-orange-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-50 transition-all shadow-xl hover:-translate-y-1"
         >
-          Browse Creator Vaults
+          Browse Vaults
+          <ArrowRight className="w-5 h-5" />
         </Link>
 
         {mounted && address ? (
           <Link
             href="/creator/create"
-            className="inline-flex items-center justify-center bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg font-bold text-base hover:bg-yellow-300 shadow-lg"
+            className="inline-flex items-center gap-2 bg-black/20 text-white border border-white/20 px-8 py-4 rounded-full font-bold text-lg hover:bg-black/30 transition-all backdrop-blur-md hover:-translate-y-1"
           >
             Create Your Vault
+            <Sparkles className="w-5 h-5" />
           </Link>
         ) : mounted && !address ? (
-          <div className="bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold text-base opacity-75">
+          <div className="inline-flex items-center gap-2 bg-black/20 text-white border border-white/20 px-8 py-4 rounded-full font-bold text-lg opacity-90 backdrop-blur-md">
+            <Wallet className="w-5 h-5" />
             Connect Wallet to Create
           </div>
         ) : (
-          <div className="bg-gray-400 text-white px-6 py-3 rounded-lg font-semibold text-base opacity-75">
+          <div className="bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-lg opacity-75 backdrop-blur-md">
             Loading...
           </div>
         )}
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-8 pt-16 border-t border-white/10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-16 border-t border-white/20 mt-12 pb-16 relative z-10">
         {[
           { value: "2.5K+", label: "Active Creators" },
           { value: "$50M+", label: "Total Value Locked" },
           { value: "150K+", label: "Community Members" },
         ].map((stat, i) => (
-          <div key={i}>
-            <div className="text-3xl md:text-4xl font-black text-black">{stat.value}</div>
-            <p className="text-sm text-black-400 mt-2">{stat.label}</p>
+          <div key={i} className="flex flex-col gap-3 bg-black/30 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+            <div className={`${spaceGrotesk.className} text-5xl md:text-6xl font-black text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]`}>
+              {stat.value}
+            </div>
+            <p className="text-base text-white uppercase tracking-wider font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              {stat.label}
+            </p>
           </div>
         ))}
       </div>

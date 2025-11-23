@@ -40,7 +40,7 @@ export function Navigation() {
                                 unoptimized
                             />
                         </div>
-                        <span className="text-xl font-bold text-black">
+                        <span className="text-2xl font-black text-black drop-shadow-sm">
                             Aura.Farm
                         </span>
                     </Link>

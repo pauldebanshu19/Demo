@@ -10,6 +10,9 @@ export function GradientBackground() {
       <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-bl from-black/50 via-transparent to-transparent" />
       
+      {/* Bottom fade to black for smooth transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent via-black/40 to-black pointer-events-none" />
+      
       {/* Background Image Overlay */}
       <div className="absolute inset-0 mix-blend-overlay opacity-30">
         <Image
