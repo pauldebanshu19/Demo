@@ -1,7 +1,7 @@
 "use client"
 
 import { HeroSection } from "@/components/hero-section"
-import { TrendingBlocks } from "@/components/trending-creator"
+import { CardCarousel } from "@/components/trending-creator"
 import { Footer } from "@/components/footer"
 import { HowItWorksSection } from "@/components/HowItWork"
 import Link from "next/link"
@@ -80,7 +80,7 @@ export default function Home() {
       </section>
 
       {/* Trending Creators */}
-      <TrendingBlocks />
+      <CardCarousel />
 
       {/* How It Works Section */}
       <HowItWorksSection />

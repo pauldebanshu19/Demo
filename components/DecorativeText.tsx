@@ -6,7 +6,7 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] })
 
 export function DecorativeText({ scrollProgress }: { scrollProgress: number }) {
   return (
-    <div className="absolute inset-0 pointer-events-none z-10 text-white px-8 py-6">
+    <div className="absolute inset-0 pointer-events-none z-0 text-white px-8 py-6">
       
 
       {/* Main title - left side */}
